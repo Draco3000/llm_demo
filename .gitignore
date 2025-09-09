@@ -4,6 +4,11 @@ server_lighthouse/
 *.key
 *.crt
 
+# Nginx 配置文件
+nginx.conf
+nginx-*.conf
+*.nginx.conf
+
 # 临时文件和日志
 *.log
 *.tmp
