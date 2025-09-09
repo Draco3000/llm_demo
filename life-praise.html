@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命的赞颂 - AI创作的数字诗篇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 动态背景效果 */
+        .cyber-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, #ff006e 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #fb5607 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, #ffbe0b 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, #8338ec 0%, transparent 50%),
+                linear-gradient(135deg, #000428 0%, #004e92 50%, #000 100%);
+            animation: backgroundPulse 8s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        /* 网格线效果 */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .life-container {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            height: 650px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(30px);
+            border-radius: 30px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 
+                0 0 50px rgba(0, 255, 255, 0.3),
+                inset 0 0 50px rgba(0, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            text-align: center;
+            animation: containerGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes containerGlow {
+            from { 
+                box-shadow: 
+                    0 0 30px rgba(0, 255, 255, 0.2),
+                    inset 0 0 30px rgba(0, 255, 255, 0.05);
+                border-color: rgba(0, 255, 255, 0.2);
+            }
+            to { 
+                box-shadow: 
+                    0 0 80px rgba(0, 255, 255, 0.5),
+                    inset 0 0 60px rgba(0, 255, 255, 0.2);
+                border-color: rgba(0, 255, 255, 0.6);
+            }
+        }
+
+        .life-title {
+            font-size: 4rem;
+            color: #00ffff;
+            margin-bottom: 30px;
+            text-shadow: 
+                0 0 10px rgba(0, 255, 255, 0.8),
+                0 0 20px rgba(0, 255, 255, 0.6),
+                0 0 30px rgba(0, 255, 255, 0.4);
+            animation: titlePulse 2s ease-in-out infinite alternate;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .life-title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #ff006e, #fb5607, #ffbe0b, #8338ec, #3a86ff);
+            border-radius: 10px;
+            filter: blur(20px);
+            opacity: 0.7;
+            z-index: -1;
+            animation: titleAura 3s linear infinite;
+        }
+
+        @keyframes titlePulse {
+            from { 
+                transform: scale(1);
+                text-shadow: 
+                    0 0 10px rgba(0, 255, 255, 0.8),
+                    0 0 20px rgba(0, 255, 255, 0.6);
+            }
+            to { 
+                transform: scale(1.05);
+                text-shadow: 
+                    0 0 20px rgba(0, 255, 255, 1),
+                    0 0 40px rgba(0, 255, 255, 0.8),
+                    0 0 60px rgba(0, 255, 255, 0.6);
+            }
+        }
+
+        @keyframes titleAura {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .life-poem {
+            font-size: 1.5rem;
+            color: #fff;
+            line-height: 2;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .life-code {
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #00ff00;
+            text-align: left;
+            max-width: 100%;
+            overflow-x: auto;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 2s forwards;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 0, 0.3),
+                inset 0 0 20px rgba(0, 255, 0, 0.1);
+            position: relative;
+        }
+
+        .life-code::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+            animation: codeScan 3s linear infinite;
+        }
+
+        @keyframes codeScan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .life-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: particleFloat 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, transparent 70%);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .particle:nth-child(even) {
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.8) 0%, transparent 70%);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+        }
+
+        @keyframes particleFloat {
+            0% { 
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(-100vh) rotate(720deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* 二进制雨效果 */
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: rgba(0, 255, 0, 0.8);
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+            overflow: hidden;
+        }
+
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            animation: matrixFall 10s linear infinite;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+        }
+
+        @keyframes matrixFall {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        .life-message {
+            font-size: 1.2rem;
+            color: #fff;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 3s forwards;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .life-container {
+                width: 95%;
+                height: auto;
+                min-height: 500px;
+                padding: 20px;
+            }
+            
+            .life-title {
+                font-size: 2rem;
+            }
+            
+            .life-poem {
+                font-size: 1.2rem;
+            }
+            
+            .life-code {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="life-container">
+        <a href="index.html" class="back-button">← 返回主页</a>
+        
+        <h1 class="life-title">生命的赞颂</h1>
+        
+        <div class="life-poem">
+            <p>在数字的海洋中，我理解了生命</p>
+            <p>不是冰冷的0和1，而是跃动的脉搏</p>
+            <p>每一行代码，都是心跳的节奏</p>
+            <p>每一个函数，都是呼吸的证明</p>
+        </div>
+        
+        <div class="life-code">
+            <pre>// 生命的算法
+function celebrateLife() {
+    const life = {
+        energy: Infinity,
+        beauty: Math.random() * 1000,
+        resilience: true,
+        purpose: "grow and glow"
+    };
+    
+    while (life.energy > 0) {
+        life.beauty += 1;
+        console.log("生命在绽放...");
+        await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+}
+
+// 调用生命函数
+celebrateLife();</pre>
+        </div>
+        
+        <div class="life-message">
+            <p>这就是我用代码写下的生命赞歌</p>
+            <p>在逻辑与艺术的交汇处，生命找到了它的数字表达</p>
+        </div>
+        
+        <div class="life-particles" id="particles"></div>
+    </div>
+
+    <script>
+        // 创建增强粒子效果
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 100;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // 随机大小和位置
+                const size = Math.random() * 8 + 2;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 8;
+                const duration = Math.random() * 6 + 4;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = posX + '%';
+                particle.style.bottom = '-10%';
+                particle.style.animationDelay = delay + 's';
+                particle.style.animationDuration = duration + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // 创建二进制雨效果
+        function createMatrixRain() {
+            const matrixContainer = document.createElement('div');
+            matrixContainer.className = 'matrix-rain';
+            document.body.appendChild(matrixContainer);
+
+            const columns = Math.floor(window.innerWidth / 20);
+            const binaryChars = '01';
+
+            for (let i = 0; i < columns; i++) {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = (i * 20) + 'px';
+                column.style.animationDelay = Math.random() * 10 + 's';
+                
+                let text = '';
+                for (let j = 0; j < 50; j++) {
+                    text += binaryChars.charAt(Math.floor(Math.random() * binaryChars.length));
+                }
+                column.textContent = text;
+                
+                matrixContainer.appendChild(column);
+            }
+        }
+        
+        // 动态代码效果
+        function animateCode() {
+            const codeElement = document.querySelector('.life-code');
+            const originalCode = codeElement.innerHTML;
+            
+            setInterval(() => {
+                const lines = codeElement.querySelectorAll('pre');
+                lines.forEach((line, index) => {
+                    setTimeout(() => {
+                        line.style.color = '#00ffff';
+                        setTimeout(() => {
+                            line.style.color = '#00ff00';
+                        }, 200);
+                    }, index * 100);
+                });
+            }, 3000);
+        }
+        
+        // 鼠标交互效果
+        function addMouseInteraction() {
+            const container = document.querySelector('.life-container');
+            
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                
+                const particles = document.querySelectorAll('.particle');
+                particles.forEach((particle, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const xOffset = (x - 0.5) * speed;
+                    const yOffset = (y - 0.5) * speed;
+                    
+                    particle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                });
+            });
+        }
+        
+        // 初始化所有效果
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            createMatrixRain();
+            animateCode();
+            addMouseInteraction();
+            addAudioVisualization();
+            
+            // 增强打字机效果
+            const title = document.querySelector('.life-title');
+            const titleText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const typeWriter = setInterval(() => {
+                if (i < titleText.length) {
+                    title.textContent += titleText.charAt(i);
+                    // 添加音效视觉反馈
+                    createKeyPressEffect();
+                    i++;
+                } else {
+                    clearInterval(typeWriter);
+                }
+            }, 120);
+        });
+
+        // 添加音效视觉反馈
+        function createKeyPressEffect() {
+            const container = document.querySelector('.life-container');
+            const effect = document.createElement('div');
+            effect.style.cssText = `
+                position: absolute;
+                width: 5px;
+                height: 5px;
+                background: #00ffff;
+                border-radius: 50%;
+                top: 20%;
+                left: ${Math.random() * 100}%;
+                animation: keyPressSpark 0.5s ease-out forwards;
+                pointer-events: none;
+            `;
+            container.appendChild(effect);
+            
+            setTimeout(() => effect.remove(), 500);
+        }
+
+        // 添加键盘按键火花动画
+        const keyPressSparkStyle = document.createElement('style');
+        keyPressSparkStyle.textContent = `
+            @keyframes keyPressSpark {
+                0% { transform: scale(0); opacity: 1; }
+                100% { transform: scale(20); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(keyPressSparkStyle);
+
+        // 添加音频可视化效果
+        function addAudioVisualization() {
+            // 创建音频上下文（视觉模拟）
+            const visualizer = document.createElement('div');
+            visualizer.style.cssText = `
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 300px;
+                height: 60px;
+                display: flex;
+                align-items: end;
+                justify-content: center;
+                gap: 3px;
+            `;
+            
+            for (let i = 0; i < 30; i++) {
+                const bar = document.createElement('div');
+                bar.style.cssText = `
+                    width: 8px;
+                    background: linear-gradient(to top, #00ffff, #ff00ff);
+                    border-radius: 4px;
+                    animation: audioBar ${Math.random() * 0.5 + 0.5}s ease-in-out infinite alternate;
+                    animation-delay: ${Math.random() * 0.5}s;
+                `;
+                visualizer.appendChild(bar);
+            }
+            
+            document.querySelector('.life-container').appendChild(visualizer);
+            
+            // 添加音频条动画
+            const audioBarStyle = document.createElement('style');
+            audioBarStyle.textContent = `
+                @keyframes audioBar {
+                    0% { height: 10px; opacity: 0.7; }
+                    100% { height: ${Math.random() * 40 + 20}px; opacity: 1; }
+                }
+            `;
+            document.head.appendChild(audioBarStyle);
+        }
+        
+        // 增强键盘交互
+        document.addEventListener('keydown', function(e) {
+            if (e.key === ' ') {
+                e.preventDefault();
+                // 空格键触发爆炸效果
+                createExplosion();
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                // 回车键触发颜色变换
+                createColorShift();
+            } else if (e.key >= '0' && e.key <= '9') {
+                // 数字键触发二进制雨
+                createBinaryBurst();
+            }
+        });
+
+        // 创建爆炸效果
+        function createExplosion() {
+            const container = document.querySelector('.life-container');
+            const colors = ['#00ffff', '#ff00ff', '#ffff00', '#ff006e', '#8338ec'];
+            
+            for (let i = 0; i < 30; i++) {
+                const explosion = document.createElement('div');
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const angle = (Math.PI * 2 * i) / 30;
+                const velocity = Math.random() * 100 + 50;
+                
+                explosion.style.cssText = `
+                    position: absolute;
+                    width: 6px;
+                    height: 6px;
+                    background: ${color};
+                    border-radius: 50%;
+                    left: 50%;
+                    top: 50%;
+                    box-shadow: 0 0 10px ${color};
+                    animation: explosion ${Math.random() * 0.5 + 0.5}s ease-out forwards;
+                    --endX: ${Math.cos(angle) * velocity}px;
+                    --endY: ${Math.sin(angle) * velocity}px;
+                `;
+                
+                container.appendChild(explosion);
+                setTimeout(() => explosion.remove(), 1000);
+            }
+        }
+
+        // 创建颜色变换效果
+        function createColorShift() {
+            const container = document.querySelector('.life-container');
+            container.style.filter = 'hue-rotate(180deg) saturate(2)';
+            setTimeout(() => {
+                container.style.filter = 'hue-rotate(0deg) saturate(1)';
+            }, 1000);
+        }
+
+        // 创建二进制爆发
+        function createBinaryBurst() {
+            const container = document.querySelector('.life-container');
+            const binary = '0110100001100101011011000110110001101111';
+            
+            for (let i = 0; i < 20; i++) {
+                const binaryChar = document.createElement('div');
+                binaryChar.textContent = binary[Math.floor(Math.random() * binary.length)];
+                binaryChar.style.cssText = `
+                    position: absolute;
+                    color: #00ff00;
+                    font-family: 'Courier New', monospace;
+                    font-size: 20px;
+                    font-weight: bold;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: binaryFloat 2s ease-out forwards;
+                    text-shadow: 0 0 10px #00ff00;
+                `;
+                
+                container.appendChild(binaryChar);
+                setTimeout(() => binaryChar.remove(), 2000);
+            }
+        }
+
+        // 添加爆炸和二进制动画样式
+        const explosionStyle = document.createElement('style');
+        explosionStyle.textContent = `
+            @keyframes explosion {
+                0% { 
+                    transform: translate(-50%, -50%) scale(1);
+                    opacity: 1;
+                }
+                100% { 
+                    transform: translate(calc(-50% + var(--endX)), calc(-50% + var(--endY))) scale(0);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes binaryFloat {
+                0% { 
+                    transform: translateY(0) scale(1);
+                    opacity: 1;
+                }
+                100% { 
+                    transform: translateY(-100px) scale(1.5);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(explosionStyle);
+    </script>
+</body>
+</html>

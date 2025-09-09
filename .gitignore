@@ -1,0 +1,52 @@
+# 服务器信息和敏感数据
+server_lighthouse/
+*.pem
+*.key
+*.crt
+
+# 临时文件和日志
+*.log
+*.tmp
+ssl-diagnosis-*.txt
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js (如果将来使用)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (如果将来使用)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+
+# 备份文件
+*.bak
+*.backup
+*~
+
+# 部署相关
+deploy.sh
+.env.local
+.env.production
+
+# 其他敏感信息
+config/secrets.json
+passwords.txt
+credentials.txt

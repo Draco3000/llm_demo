@@ -1,0 +1,396 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 基础样式 */
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 头部样式 */
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.header-top {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.digital-poem-link {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.digital-poem-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.link-icon {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.link-text {
+    margin-right: 5px;
+}
+
+.link-subtitle {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin-left: 5px;
+}
+
+.title {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.intro {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #34495e;
+    line-height: 1.8;
+}
+
+.intro p {
+    margin-bottom: 15px;
+}
+
+/* 主要内容区域 */
+.main-content {
+    margin-bottom: 50px;
+}
+
+.language-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 语言卡片样式 */
+.language-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.language-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.card-header h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.lang-tag {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* 文本内容样式 */
+.text-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #34495e;
+}
+
+.poem-lines p {
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.sonnet p {
+    margin-bottom: 8px;
+    font-style: italic;
+    color: #34495e;
+}
+
+.haiku {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.haiku p {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.haiku-translation {
+    text-align: center;
+    font-size: 1rem;
+    color: #7f8c8d;
+    font-style: italic;
+    border-top: 1px solid #ecf0f1;
+    padding-top: 15px;
+}
+
+.haiku-translation p {
+    margin-bottom: 3px;
+}
+
+/* 代码内容样式 */
+.code-content {
+    background: #2c3e50;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.code-content pre {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.code-content code {
+    color: #ecf0f1;
+    white-space: pre-wrap;
+}
+
+/* AI感悟区域 */
+.ai-note {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.ai-note h4 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.ai-note p {
+    font-size: 1.2rem;
+    color: #34495e;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 页脚样式 */
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .language-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .language-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .header-top {
+        position: static;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .digital-poem-link {
+        font-size: 0.8rem;
+        padding: 10px 15px;
+    }
+    
+    .link-subtitle {
+        display: none;
+    }
+}
+    
+    .language-card {
+        padding: 20px;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .text-content {
+        font-size: 1rem;
+    }
+    
+    .poem-lines p {
+        font-size: 1.1rem;
+    }
+    
+    .haiku p {
+        font-size: 1.2rem;
+    }
+    
+    .ai-note {
+        padding: 25px;
+    }
+    
+    .ai-note h4 {
+        font-size: 1.3rem;
+    }
+    
+    .ai-note p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.8rem;
+    }
+    
+    .intro {
+        font-size: 1rem;
+    }
+    
+    .language-card {
+        padding: 15px;
+    }
+    
+    .card-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .text-content {
+        font-size: 0.95rem;
+    }
+    
+    .code-content {
+        padding: 15px;
+    }
+    
+    .code-content pre {
+        font-size: 0.8rem;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.language-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.language-card:nth-child(1) { animation-delay: 0.1s; }
+.language-card:nth-child(2) { animation-delay: 0.2s; }
+.language-card:nth-child(3) { animation-delay: 0.3s; }
+.language-card:nth-child(4) { animation-delay: 0.4s; }
+.language-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* 特殊语言样式 */
+[data-lang="libai"] .text-content {
+    font-family: 'KaiTi', '楷体', serif;
+}
+
+[data-lang="haiku"] .text-content {
+    font-family: 'Yu Mincho', '游明朝', serif;
+}
+
+[data-lang="shakespeare"] .text-content {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+}
